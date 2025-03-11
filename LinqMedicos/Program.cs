@@ -14,7 +14,7 @@ namespace LinqMedicos
             string caminhoArquivo = Path.Combine(Environment.CurrentDirectory, "DesafioMedicos.xlsx");
 
             ImportarDadosPlanilha(caminhoArquivo);
-            Ex1();
+            Ex4();
         }
 
         static void ImportarDadosPlanilha(string caminhoArquivo)
@@ -70,6 +70,41 @@ namespace LinqMedicos
             var totalMedicos = consultas.Select(n => n.NomeMedico).Distinct().Count();
 
             Console.WriteLine($"Total: {totalMedicos} médicos");
+        }
+
+        // 3 – Liste o nome dos médicos e suas especialidades.
+        static void Ex3()
+        {
+            var especialidades = consultas
+                .GroupBy(x => x.NomeMedico)
+                .Select(n => new
+                {
+                    nome = n.Key,
+                    especialidade = n.Select(c => c.Especialidade).Distinct()
+                });
+
+            foreach (var medico in especialidades)
+            {
+                Console.WriteLine($"Médico: {medico.nome}, Especialidade: {string.Join(", ", medico.especialidade)}");
+            }
+        }
+
+        // 4 – Liste o total em valor de consulta que receberemos. Some o valor de todas as consultas.
+        static void Ex4()
+        {
+            var totalEmConsultas = consultas.Select(v => v.ValorConsulta).Sum();
+            var totalPorEspecialidade = consultas.GroupBy(e => e.Especialidade).Select(g => new
+            {
+                especialidade = g.Key,
+                total = g.Select(v => v.ValorConsulta).Sum()
+            });
+
+            Console.WriteLine($"Total em dinheiro das consultas: R$ {totalEmConsultas.ToString("F2", CultureInfo.InvariantCulture)}");
+
+            foreach (var especialidade in totalPorEspecialidade)
+            {
+                Console.WriteLine($"{especialidade.especialidade} - R$ {especialidade.total.ToString("F2", CultureInfo.InvariantCulture)}");
+            }
         }
     }
 }
