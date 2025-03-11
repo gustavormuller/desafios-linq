@@ -663,11 +663,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Aulas\\MultEmanuel\\LinqMult\\LinqMult.csproj",
+      "projectUniqueName": "C:\\Aulas\\desafios-linq\\LinqMult\\LinqMult.csproj",
       "projectName": "LinqMult",
-      "projectPath": "C:\\Aulas\\MultEmanuel\\LinqMult\\LinqMult.csproj",
+      "projectPath": "C:\\Aulas\\desafios-linq\\LinqMult\\LinqMult.csproj",
       "packagesPath": "C:\\Users\\gustavo.muller\\.nuget\\packages\\",
-      "outputPath": "C:\\Aulas\\MultEmanuel\\LinqMult\\obj\\",
+      "outputPath": "C:\\Aulas\\desafios-linq\\LinqMult\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

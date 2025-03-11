@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "K/pVwChrVX8=",
+  "dgSpecHash": "9YcL/qPVUHQ=",
   "success": true,
-  "projectFilePath": "C:\\Aulas\\MultEmanuel\\LinqMult\\LinqMult.csproj",
+  "projectFilePath": "C:\\Aulas\\desafios-linq\\LinqMult\\LinqMult.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gustavo.muller\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "C:\\Users\\gustavo.muller\\.nuget\\packages\\enums.net\\4.0.1\\enums.net.4.0.1.nupkg.sha512",
