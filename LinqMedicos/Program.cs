@@ -14,7 +14,56 @@ namespace LinqMedicos
             string caminhoArquivo = Path.Combine(Environment.CurrentDirectory, "DesafioMedicos.xlsx");
 
             ImportarDadosPlanilha(caminhoArquivo);
-            Ex4();
+
+            Console.WriteLine("Digite o número relacionado ao exercício que deseja ver:");
+            Console.WriteLine("1 - Exercício 1");
+            Console.WriteLine("2 - Exercício 2");
+            Console.WriteLine("3 - Exercício 3");
+            Console.WriteLine("4 - Exercício 4");
+            Console.WriteLine("5 - Exercício 5");
+            Console.WriteLine("0 - Sair");
+            int option = int.Parse(Console.ReadLine());
+
+            while (option != 0)
+            {
+                switch (option)
+                {
+                    case 1:
+                        Ex1();
+                        break;
+
+                    case 2:
+                        Ex2();
+                        break;
+
+                    case 3:
+                        Ex3();
+                        break;
+
+                    case 4:
+                        Ex4();
+                        break;
+
+                    case 5:
+                        Ex5();
+                        break;
+
+                    default:
+                        Console.WriteLine("Opção inválida. Tente novamente.");
+                        break;
+                }
+
+                Console.WriteLine("Digite o número relacionado ao exercício que deseja ver:");
+                Console.WriteLine("1 - Exercício 1");
+                Console.WriteLine("2 - Exercício 2");
+                Console.WriteLine("3 - Exercício 3");
+                Console.WriteLine("4 - Exercício 4");
+                Console.WriteLine("5 - Exercício 5");
+                Console.WriteLine("0 - Sair");
+                option = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine("Saindo...");
         }
 
         static void ImportarDadosPlanilha(string caminhoArquivo)
@@ -104,6 +153,29 @@ namespace LinqMedicos
             foreach (var especialidade in totalPorEspecialidade)
             {
                 Console.WriteLine($"{especialidade.especialidade} - R$ {especialidade.total.ToString("F2", CultureInfo.InvariantCulture)}");
+            }
+        }
+
+        // 5 – Para o dia 30/03. Quantas consultas vão ser realizadas? Quantas são Particular? Liste para esse dia os horários de consulta de cada médico e suas especialidades.
+        static void Ex5()
+        {
+            DateTime dia = new DateTime(2023, 03, 30);
+
+            var totalConsultas = consultas.Where(d => d.DataConsulta == dia).Count();
+            var particular = consultas.Where(d => d.DataConsulta == dia).Where(p => p.Particular).Count();
+
+            Console.WriteLine($"Para o dia 30/03 - Total de {totalConsultas} consultas. {particular} particular e {totalConsultas - particular} convênios.");
+
+            var medicos = consultas.Where(d => d.DataConsulta == dia).GroupBy(m => m.NomeMedico).Select(n => new
+            {
+                medico = n.Key,
+                especialidade = n.Select(e => e.Especialidade).Distinct(),
+                horario = n.Select(h => h.HoraDaConsulta)
+            }).ToList();
+
+            foreach (var medico in medicos)
+            {
+                Console.WriteLine($"{medico.medico} - {string.Join(',', medico.especialidade)} : {string.Join(',', medico.horario)}");
             }
         }
     }

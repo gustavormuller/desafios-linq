@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LinqMedicos")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a76733a6043a7a337c4047a59893fbc6aedba859")]
 [assembly: System.Reflection.AssemblyProductAttribute("LinqMedicos")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LinqMedicos")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
