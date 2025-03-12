@@ -1,6 +1,6 @@
 namespace Musicas.Models
 {
-    class Musica
+    public class Musica
     {
         public int Codigo { get; protected set; }
         public DateTime DataDeLancamento { get; protected set; }

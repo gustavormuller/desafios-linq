@@ -14,12 +14,13 @@ namespace Musicas
         {
             ImportarDadosPlanilha(caminhoArquivo);
 
-            Ex01();
-            Ex02();
-            Ex03();
-            Ex04();
-            Ex05();
-            Ex06();
+            // Ex01();
+            // Ex02();
+            // Ex03();
+            // Ex04();
+            // Ex05();
+            // Ex06();
+            Extra01();
         }
 
         private static void ImportarDadosPlanilha(string caminhoArquivo)
@@ -234,9 +235,28 @@ namespace Musicas
             }
         }
 
+        // Desafio extra 1
         private static void Extra01()
         {
-            
+            List<string> generos = ["Country", "Blues", "Classical"];
+            List<string> ouvidas = ["Remain", "Thousand", "Off", "Central", "Fear"];
+
+            Ouvinte ouvinte = new Ouvinte("Gustavo", generos, ouvidas);
+
+            List<Musica> recomendadas = ouvinte.RecomendarMusicas(musicas);
+
+            Console.WriteLine($"Recomendações para o ouvinte {ouvinte.NomeOuvinte}:");
+            if (recomendadas.Count > 0)
+            {
+                foreach (var musica in recomendadas)
+                {
+                    Console.WriteLine($"{musica.Nome} - {musica.Album} - {musica.Genero} - {musica.DataDeLancamento.ToString("dd/MM/yyyy")}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Nenhuma música recomendada.");
+            }
         }
     }
 }
