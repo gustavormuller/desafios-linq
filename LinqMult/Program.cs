@@ -1,4 +1,5 @@
-﻿using LinqMult.Models;
+﻿using System.Globalization;
+using LinqMult.Models;
 using NPOI.SS.UserModel;
 
 namespace LinqMult
@@ -12,81 +13,9 @@ namespace LinqMult
         {
             ImportarDadosPlanilha();
 
-            Console.WriteLine("Digite o número relacionado ao exercício que deseja ver:");
-            Console.WriteLine("1 - Exercício 1");
-            Console.WriteLine("2 - Exercício 2");
-            Console.WriteLine("3 - Exercício 3");
-            Console.WriteLine("4 - Exercício 4");
-            Console.WriteLine("5 - Exercício 5");
-            Console.WriteLine("6 - Exercício 6");
-            Console.WriteLine("7 - Exercício 7");
-            Console.WriteLine("8 - Exercício 8");
-            Console.WriteLine("9 - Exercício 9");
-            Console.WriteLine("10 - Exercício 10");
-            Console.WriteLine("11 - Exercício 11");
-            Console.WriteLine("12 - Exercício 12");
-            Console.WriteLine("13 - Exercício 13");
-            Console.WriteLine("0 - Sair");
-            int option = int.Parse(Console.ReadLine());
-
-            while (option != 0)
+            int option;
+            do
             {
-                switch (option)
-                {
-                    case 1:
-                        ExercicioUm();
-                        break;
-
-                    case 2:
-                        ExercicioDois();
-                        break;
-
-                    case 3:
-                        ExercicioTres();
-                        break;
-
-                    case 4:
-                        ExercicioQuatro();
-                        break;
-
-                    case 5:
-                        ExercicioCinco();
-                        break;
-
-                    case 6:
-                        ExercicioSeis();
-                        break;
-
-                    case 7:
-                        ExercicioSete();
-                        break;
-
-                    case 8:
-                        ExercicioOito();
-                        break;
-
-                    case 9:
-                        ExercicioNove();
-                        break;
-
-                    case 10:
-                        ExercicioDez();
-                        break;
-
-                    case 11:
-                        ExercicioOnze();
-                        break;
-
-                    case 12:
-                        ExercicioDoze();
-                        break;
-
-
-                    default:
-                        Console.WriteLine("Opção inválida. Tente novamente.");
-                        break;
-                }
-
                 Console.WriteLine("Digite o número relacionado ao exercício que deseja ver:");
                 Console.WriteLine("1 - Exercício 1");
                 Console.WriteLine("2 - Exercício 2");
@@ -101,12 +30,107 @@ namespace LinqMult
                 Console.WriteLine("11 - Exercício 11");
                 Console.WriteLine("12 - Exercício 12");
                 Console.WriteLine("13 - Exercício 13");
+                Console.WriteLine("14 - Exercício 14");
+                Console.WriteLine("15 - Exercício 15");
+                Console.WriteLine("16 - Exercício 16");
+                Console.WriteLine("17 - Exercício 17");
                 Console.WriteLine("0 - Sair");
+
+                // Captura a opção do usuário
                 option = int.Parse(Console.ReadLine());
-            }
+
+                if (option != 0)
+                {
+                    switch (option)
+                    {
+                        case 1:
+                            ExercicioUm();
+                            break;
+
+                        case 2:
+                            ExercicioDois();
+                            break;
+
+                        case 3:
+                            ExercicioTres();
+                            break;
+
+                        case 4:
+                            ExercicioQuatro();
+                            break;
+
+                        case 5:
+                            ExercicioCinco();
+                            break;
+
+                        case 6:
+                            ExercicioSeis();
+                            break;
+
+                        case 7:
+                            ExercicioSete();
+                            break;
+
+                        case 8:
+                            ExercicioOito();
+                            break;
+
+                        case 9:
+                            ExercicioNove();
+                            break;
+
+                        case 10:
+                            ExercicioDez();
+                            break;
+
+                        case 11:
+                            ExercicioOnze();
+                            break;
+
+                        case 12:
+                            ExercicioDoze();
+                            break;
+
+                        case 13:
+                            ExercicioTreze();
+                            break;
+
+                        case 14:
+                            ExercicioQuatorze();
+                            break;
+
+                        case 15:
+                            ExercicioQuinze();
+                            break;
+
+                        case 16:
+                            ExercicioDezesseis();
+                            break;
+
+                        case 17:
+                            ExercicioDezessete();
+                            break;
+
+                        default:
+                            Console.WriteLine("Opção inválida. Tente novamente.");
+                            break;
+                    }
+
+                    // Pergunta se o usuário deseja ver outro exercício
+                    Console.WriteLine("Deseja ver outro exercício? (s/n)");
+                    string resposta = Console.ReadLine().ToLower();
+
+                    if (resposta != "s")
+                    {
+                        break; // Sai do loop se a resposta não for "s"
+                    }
+
+                }
+            } while (option != 0); // Continua até o usuário escolher a opção 0 para sair
 
             Console.WriteLine("Saindo...");
         }
+
 
 
         private static void ImportarDadosPlanilha()
@@ -307,10 +331,96 @@ namespace LinqMult
         // 12. Liste os 3 cargos mais comuns na empresa.
         private static void ExercicioDoze()
         {
-            var comuns = funcionarios.GroupBy(c => c.Cargo).Select(c => new
+            var comuns = funcionarios
+            .GroupBy(c => c.Cargo)
+            .Select(c => new
             {
                 cargo = c.Key,
+                quantidade = c.Count()
             })
+            .OrderByDescending(c => c.quantidade)
+            .Take(3)
+            .ToList();
+
+            foreach (var cargo in comuns)
+            {
+                Console.WriteLine($"{cargo.cargo} - {cargo.quantidade}");
+            }
+        }
+
+        // 13. Qual funcionário recebe o maior salário dentro de cada departamento?
+        private static void ExercicioTreze()
+        {
+            var maiorSalario = funcionarios
+                .GroupBy(d => d.Departamento)
+                .Select(s => new
+                {
+                    departamento = s.Key,
+                    salario = s.Max(x => x.Salario),
+                    nome = s.OrderByDescending(x => x.Salario).FirstOrDefault().Nome
+                })
+                .ToList();
+
+            foreach (var func in maiorSalario)
+            {
+                Console.WriteLine($"{func.departamento} - {func.nome} - {func.salario}");
+            }
+        }
+
+        // 14. Qual é a média salarial de cada estado?
+        private static void ExercicioQuatorze()
+        {
+            var mediaSalarialPorEstado = funcionarios
+                .GroupBy(e => e.Estado)
+                .Select(s => new
+                {
+                    estado = s.Key,
+                    media = s.Average(x => x.Salario)
+                })
+                .ToList();
+
+            foreach (var media in mediaSalarialPorEstado)
+            {
+                Console.WriteLine($"{media.estado} - R$ {media.media.ToString("F2", CultureInfo.InvariantCulture)}");
+            }
+        }
+
+        // 15. Liste os funcionários admitidos antes de 2015.
+        private static void ExercicioQuinze()
+        {
+            var admitidosAntes = funcionarios
+                .Select(d => d.DataAdmissao)
+                .Where(d => d.Year < 2015)
+                .Count();
+
+            Console.WriteLine($"Funcionários admitidos antes de 2015: {admitidosAntes}");
+        }
+
+        // 16. Quem é o funcionário mais recente da empresa?
+        private static void ExercicioDezesseis()
+        {
+            var maisRecente = funcionarios
+                .OrderByDescending(d => d.DataAdmissao)
+                .Select(n => n.Nome)
+                .FirstOrDefault();
+
+            Console.WriteLine($"Funcionário mais recente: {maisRecente}");
+        }
+
+        // 17. Qual cargo tem a maior variação salarial (máximo - mínimo)?
+        private static void ExercicioDezessete()
+        {
+            var maiorVariacao = funcionarios
+                .GroupBy(c => c.Cargo)
+                .Select(m => new
+                {
+                    cargo = m.Key,
+                    variacao = m.Max(s => s.Salario) - m.Min(s => s.Salario)
+                })
+                .OrderByDescending(v => v.variacao)
+                .FirstOrDefault();
+
+            Console.WriteLine($"Cargo com maior variação salarial: {maiorVariacao.cargo} - Variação: {maiorVariacao.variacao:C}");
         }
     }
 }
