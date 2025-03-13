@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Aulas\\desafios-linq\\Musicas\\Musicas.csproj": {}
+    "C:\\Users\\admin\\Desktop\\Projetos\\desafios-linq\\Musicas\\Musicas.csproj": {}
   },
   "projects": {
-    "C:\\Aulas\\desafios-linq\\Musicas\\Musicas.csproj": {
+    "C:\\Users\\admin\\Desktop\\Projetos\\desafios-linq\\Musicas\\Musicas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Aulas\\desafios-linq\\Musicas\\Musicas.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\Desktop\\Projetos\\desafios-linq\\Musicas\\Musicas.csproj",
         "projectName": "Musicas",
-        "projectPath": "C:\\Aulas\\desafios-linq\\Musicas\\Musicas.csproj",
-        "packagesPath": "C:\\Users\\gustavo.muller\\.nuget\\packages\\",
-        "outputPath": "C:\\Aulas\\desafios-linq\\Musicas\\obj\\",
+        "projectPath": "C:\\Users\\admin\\Desktop\\Projetos\\desafios-linq\\Musicas\\Musicas.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\admin\\Desktop\\Projetos\\desafios-linq\\Musicas\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\gustavo.muller\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -67,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
