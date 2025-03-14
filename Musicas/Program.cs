@@ -21,6 +21,7 @@ namespace Musicas
             // Ex05();
             // Ex06();
             Extra01();
+            Extra02();
         }
 
         private static void ImportarDadosPlanilha(string caminhoArquivo)
@@ -256,6 +257,17 @@ namespace Musicas
             else
             {
                 Console.WriteLine("Nenhuma música recomendada.");
+            }
+        }
+
+        private static void Extra02()
+        {
+            List<TendenciaMusical> tendencias = TendenciaMusical.RepresentarTendencia(musicas);
+
+            Console.WriteLine("Tendências musicais:");
+            foreach (var tendencia in tendencias)
+            {
+                Console.WriteLine($"{tendencia.Ano} - {tendencia.Genero} - {tendencia.QuantidadeMusicas} músicas");
             }
         }
     }
